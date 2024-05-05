@@ -25,7 +25,12 @@ class GitwebException(Exception):
 class Webgit:
     name = ""
     extension = ".tar.gz"
-    private = ".gitweb"
+    if "SRCDEST" in os.environ:
+        private = os.path.join(os.environ["SRCDEST"], ".gitweb")
+    elif "SRCPKGDEST" in os.environ:
+        private = os.path.join(os.environ["SRCPKGDEST"], ".gitweb")
+    else: 
+        private = ".gitweb"
 
     @classmethod
     def check(cls, url):

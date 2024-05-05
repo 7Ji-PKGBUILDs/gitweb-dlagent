@@ -2,7 +2,7 @@
 # Maintainer: 7Ji <pugokushin@gmail.com>
 
 pkgname=gitweb-dlagent
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='A dlagent targets for efficiency in Archlinux vcs packages'
 arch=('any')
