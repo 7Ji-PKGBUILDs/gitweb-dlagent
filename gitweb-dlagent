@@ -79,8 +79,10 @@ class Webgit:
         print(f"Downloaded in {(time.time() - t1):.2f} seconds")
 
     def extract(self):
-        # is there a better way to get srcdir?
-        extractdir = os.path.join("src", self.repo)
+        if "BUILDDIR" in os.environ:
+            extractdir = os.path.join(os.environ["BUILDDIR"], os.path.basename(os.getcwd()), "src", self.repo)
+        else:
+            extractdir = os.path.join("src", self.repo)
         if not os.path.exists(extractdir):
             os.makedirs(extractdir)
         os.system(f"rm -rf {extractdir}/*")
